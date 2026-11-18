@@ -10,7 +10,7 @@ pid_t fg_pid = -1;   // define the global here
 void handle_sigtstp(int sig) {
     if (fg_pid > 0) {
         kill(fg_pid, SIGTSTP);
-        cout << "\nProcess stopped and moved to background\n";
+        cout << "\nProcess stopped\n";
         fg_pid = -1;
        
     }

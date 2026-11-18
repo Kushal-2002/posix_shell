@@ -1,7 +1,7 @@
 # Advanced Operating Systems – Assignment 2
 
 A modular UNIX-like shell written in **C++** for the AOS course.  
-It supports command parsing, pipelines, I/O redirection, job control, history, and tab-autocomplete.
+It supports command parsing, pipelines, I/O redirection, background execution (`&`), Ctrl+C/Ctrl+Z forwarding to the foreground process, history, and tab-autocomplete.
 
 ---
 
@@ -13,13 +13,13 @@ It supports command parsing, pipelines, I/O redirection, job control, history, a
 | `shell_core.cpp`  | Core execution logic: parsing & dispatch |
 | `pipeline.cpp`    | Pipeline execution (`cmd1 | cmd2 | ...`) |
 | `io.cpp`          | I/O redirection (`<`, `>`, `>>`) |
-| `builtins.cpp`    | Built-in commands (`cd`, `pwd`, `exit`, `jobs`, `fg`, `bg`, `history`, …) |
-| `signals.cpp`     | Signal handlers (`SIGINT`, `SIGTSTP`, `SIGCHLD`) |
-| `history.cpp`     | Persistent history (`._shell_command_history`) |
+| `builtins.cpp`    | Built-in commands (`cd`, `pwd`, `exit`, `history`, …) |
+| `signals.cpp`     | Signal handlers (`SIGINT`, `SIGTSTP`) |
+| `history.cpp`     | Persistent history (`.shell_command_history`) |
 | `autocomplete.cpp`| Tab-completion logic |
-| `utils.cpp`       | Utility functions (tokenizer, helpers, error wrappers) |
+| `utils.cpp`       | Utility functions (raw mode, tokenizer, command splitting, helpers) |
 | `shell.h`         | Shared declarations |
-| `Makefile`        | Build instructions |
+| `makefile`        | Build instructions |
 | `README.md`       | Documentation |
 
 ---
@@ -33,6 +33,8 @@ It supports command parsing, pipelines, I/O redirection, job control, history, a
 ### Build
 make
 
+### execute
+./shell
 
 ## 📑 Functions by File
 
@@ -84,7 +86,7 @@ make
 - preprocess()
 - display()
 - split_into_commands()
-- is_interal()
+- is_internal()
 
 
 
